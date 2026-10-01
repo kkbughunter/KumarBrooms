@@ -34,7 +34,10 @@ class ApiClient {
     ErrorInterceptorHandler handler,
   ) async {
     final request = error.requestOptions;
-    final isUnauthorized = error.response?.statusCode == 401;
+    // Spring Security can answer an anonymous request with either 401 or 403,
+    // depending on which part of the security chain rejected it.
+    final statusCode = error.response?.statusCode;
+    final isUnauthorized = statusCode == 401 || statusCode == 403;
     final isAuthRequest = request.path.startsWith('/api/auth/');
     final alreadyRetried = request.extra['authRetried'] == true;
 
