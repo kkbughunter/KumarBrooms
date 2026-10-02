@@ -17,7 +17,9 @@ public class CorsConfig {
         // Flutter web uses a dynamic localhost port during development.
         config.setAllowedOriginPatterns(List.of(
                 "http://localhost:*",
-                "http://127.0.0.1:*"
+                "http://127.0.0.1:*",
+                "http://kumarbrooms.astraval.com",
+                "https://kumarbrooms.astraval.com"
         ));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
